@@ -9,16 +9,17 @@ Technical documentation and surviving source materials for a hardware-in-the-loo
 
 The system maps computation onto an FTJ array as follows:
 
-\[
-\text{weight } W_{ij} \rightarrow \text{conductance } G_{ij},\qquad
+$$
+\text{weight } W_{ij} \rightarrow \text{conductance } G_{ij},
+\qquad
 \text{input } x_i \rightarrow \text{word-line voltage } V_i
-\]
+$$
 
 The accumulated bit-line current performs an analog multiply-accumulate operation:
 
-\[
+$$
 I_j = \sum_i G_{ij}V_i
-\]
+$$
 
 The current is converted by a transimpedance amplifier, filtered, digitized by an ADC, and corrected in embedded software. The same data path supports vector dot products, image convolution, and a hardware-assisted convolutional neural network.
 
