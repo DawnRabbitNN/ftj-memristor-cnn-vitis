@@ -73,15 +73,15 @@ For a selected word line, a DAC converts a digital code into an analog voltage. 
 
 For column \(j\):
 
-\[
+$$
 I_j = \sum_i G_{ij}V_i
-\]
+$$
 
 and the transimpedance stage gives:
 
-\[
+$$
 V_{ADC,j}=R_F I_j
-\]
+$$
 
 The patent describes 1 kOhm and 1 MOhm feedback ranges for mA- and microamp-scale measurements respectively.
 
