@@ -2,48 +2,48 @@
 
 ## 1. From weights to conductance
 
-An FTJ stores a positive conductance, while neural-network weights or image kernels may be negative. A general affine mapping between a weight range \([W_{min}, W_{max}]\) and conductance range \([G_{min}, G_{max}]\) is:
+An FTJ stores a positive conductance, while neural-network weights or image kernels may be negative. A general affine mapping between a weight range $[W_{min}, W_{max}]$ and conductance range $[G_{min}, G_{max}]$ is:
 
-\[
+$$
 W = aG + b
-\]
+$$
 
 where
 
-\[
+$$
 a = \frac{W_{max}-W_{min}}{G_{max}-G_{min}}
-\]
+$$
 
 and
 
-\[
+$$
 b = W_{min}-aG_{min}
-\]
+$$
 
-For an input vector \(x_i\), the desired weighted sum is therefore:
+For an input vector $x_i$, the desired weighted sum is therefore:
 
-\[
+$$
 \sum_i W_i x_i
 =a\sum_iG_i x_i+b\sum_i x_i
-\]
+$$
 
 The first term comes from the measured array current. The second term is an offset correction that can be implemented digitally or with an additional bias column.
 
-For a symmetric weight interval \([-W_{max},W_{max}]\), the patent describes a bias-column formulation. A bias column with conductance \(G_{min}+G_{max}\) permits the corrected ADC output to be formed as:
+For a symmetric weight interval $[-W_{max},W_{max}]$, the patent describes a bias-column formulation. A bias column with conductance $G_{min}+G_{max}$ permits the corrected ADC output to be formed as:
 
-\[
+$$
 V'_{ADC}=2V_{ADC}-V_{ADC,bias}
-\]
+$$
 
-followed by scaling with \(W_{max}/(G_{max}-G_{min})\).
+followed by scaling with $W_{max}/(G_{max}-G_{min})$.
 
 ## 2. From inputs to DAC voltages
 
 The surviving program uses a midpoint DAC code of 8192 and a legacy conversion factor of approximately 819.2 codes per volt:
 
-\[
+$$
 DAC(x)=8192+819.2V
-\]
+$$
 
 For MAC validation, the publication reports word-line input voltages in the range -0.1 V to +0.1 V. The code should treat the conversion factor as a board calibration constant rather than a universal device property.
 
